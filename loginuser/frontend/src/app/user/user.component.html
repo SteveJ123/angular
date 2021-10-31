@@ -1,0 +1,5 @@
+<div class="userDetailDisplay" *ngIf="userDetail">
+    <div>{{userDetail.userName}}</div>
+    <div>{{userDetail.userEmail}}</div>
+    <div><button (click)="signout()">Sign Out</button></div>
+</div>

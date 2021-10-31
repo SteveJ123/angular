@@ -1,0 +1,12 @@
+.userDetailDisplay{
+    display: flex;
+    justify-content: space-around;
+    margin: 20px;
+    padding: 20px;
+    background-color: blue;
+    color: white;
+}
+
+button{
+    padding: 4px;
+}

@@ -1,0 +1,37 @@
+<div class="container containerSize">
+    <header>Login Form</header>
+    <form [formGroup]="userFormDetails" (submit)="getUserDetail($event)">
+       <div class="input-field">         
+        <input type="text" formControlName="emailId">
+          <label>Email test@gmail.com</label>
+       </div>
+       <div class="input-field">
+        <input type="text" formControlName="password">
+          <!-- <span class="show">SHOW</span> -->
+          <label>Password test</label>
+       </div>
+       <div class="button">
+          <div class="inner"></div>                    
+          <button>Submit</button>
+       </div>
+    </form>    
+    <div class="auth textCenter">
+      Or login with
+   </div>
+    <div class="container mt-5">      
+      <div class="row mt-5">
+        <div class="links">
+              <button class="google" #loginRef>
+                Login with Google<img class="social-btn-icon" alt="Login with Google" src="https://hrcdn.net/fcore/assets/google-colored-20b8216731.svg">
+              </button>
+        </div>   
+      </div>
+     
+    </div>  
+
+
+    <!-- <div class="signup">
+       Not a member? <a href="#">Signup now</a>
+    </div> -->
+ </div>
+  
