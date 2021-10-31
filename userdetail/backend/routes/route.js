@@ -48,13 +48,13 @@ router.get("/:id",(req,res)=>{
         return res.status(400).send("no recound found with id", req.params.id);
     }
 
-    Employee.find((err, doc)=>{
-        if(err){
-            console.log("error in get data", err);
-        }else{
-            res.send(doc);
-        }
-    })
+    // Employee.find((err, doc)=>{
+    //     if(err){
+    //         console.log("error in get data", err);
+    //     }else{
+    //         res.send(doc);
+    //     }
+    // })
 })
 
 // put api
@@ -77,13 +77,13 @@ router.put("/:id",(req,res)=>{
         return res.status(400).send("no recound found with id", req.params.id);
     }
 
-    Employee.find((err, doc)=>{
-        if(err){
-            console.log("error in get data", err);
-        }else{
-            res.send(doc);
-        }
-    })
+    // Employee.find((err, doc)=>{
+    //     if(err){
+    //         console.log("error in get data", err);
+    //     }else{
+    //         res.send(doc);
+    //     }
+    // })
 })
 
 //delete employee id
@@ -100,13 +100,13 @@ router.delete("/:id",(req,res)=>{
         return res.status(400).send("no recound found with id", req.params.id);
     }
 
-    Employee.find((err, doc)=>{
-        if(err){
-            console.log("error in get data", err);
-        }else{
-            res.send(doc);
-        }
-    })
+    // Employee.find((err, doc)=>{
+    //     if(err){
+    //         console.log("error in get data", err);
+    //     }else{
+    //         res.send(doc);
+    //     }
+    // })
 })
 
 module.exports = router;
