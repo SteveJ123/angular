@@ -1,0 +1,57 @@
+<div class="container" style="background-color: #183693; width: 800px; height: 600px; margin: 0 auto;">    
+    <div id="loginbox" style="margin-top:50px;" class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">                    
+        <div class="panel panel-info" >           
+  
+                <div style="padding-top:60px; margin-left: 85px;" class="panel-body" >                
+                        
+                    <form id="loginform" class="form-horizontal" role="form" [formGroup]="loginForm" (submit)="loginDetails($event)" style="background-color: white; width: 600px; padding: 40px; text-align: center;">                  
+                                <div class="row">
+                                  <h1 style="color: #183693; font-size: 72px; font-weight: 600;">NOKIA</h1>                                  
+                                  <h1 style="padding-top: 20px;font-size: 45px;">FACILIVISS</h1>
+                                <mat-form-field appearance="outline">
+                                  <mat-label style="margin-left: 10px;">Email</mat-label>                              
+                                  <mat-icon matPrefix><mat-icon>account_circle</mat-icon></mat-icon>
+                                  <input matInput type="email" formControlName="email" placeholder="Placeholder">                                                                                      
+                                </mat-form-field>
+                                <div style="padding: 0px;margin: 0px;text-align: left;padding-left: 24px;" *ngIf="loginForm.get('email').invalid &&  loginForm.get('email').touched" class="alert text-danger">
+                                  <div *ngIf="loginForm.get('email').errors.required">
+                                      email is required.
+                                  </div>
+                                  <div *ngIf="loginForm.get('email').errors.pattern">
+                                      enter valid email
+                                  </div>
+                              </div> 
+                                 <br>
+                                <mat-form-field appearance="outline" >
+                                  <mat-label style="margin-left: 20px;">Password</mat-label>                              
+                                  <mat-icon matPrefix><mat-icon>lock</mat-icon></mat-icon>
+                                  <input matInput placeholder="Password" [type]="hide ? 'text' : 'password'" formControlName="password" style="box-shadow: none;">
+                                  <mat-icon matSuffix (click)="hide = !hide">{{hide ?  'visibility' : 'visibility_off' }}</mat-icon>                                 
+                                  </mat-form-field>
+                                <div style="padding: 0px;margin: 0px;text-align: left;padding-left: 24px;" *ngIf="loginForm.get('password').invalid &&  loginForm.get('password').touched" class="alert text-danger">
+                                  <div *ngIf="loginForm.get('password').errors.required">
+                                      password is required.
+                                  </div>
+                                  <div *ngIf="loginForm.get('email').errors.pattern">
+                                      enter valid password
+                                  </div>
+                              </div>
+                                <div class="panel-heading">
+                                  <div class="panel-title"></div>
+                                  <div style="float:right; font-size: 80%; position: relative; top:-10px"><a href="#">Forgot password?</a></div>
+                              </div>  
+                            </div>   
+                            
+  
+                              <div class="row">
+                                <button mat-button  [disabled]="loginForm.invalid" style="background-color: #183693; color: white;" >Submit</button>
+                              </div>
+                    
+                        </form>     
+  
+  
+  
+                    </div>                     
+                </div>  
+    </div> 
+  </div>

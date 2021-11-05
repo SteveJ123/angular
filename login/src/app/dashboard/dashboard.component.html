@@ -1,0 +1,155 @@
+<mat-toolbar color="primary">
+    <mat-toolbar-row>
+        <button mat-icon-button (click)="toggleSideBar()">
+            <mat-icon>menu</mat-icon>
+        </button>
+
+        <span> APP LOGO </span>
+
+        <div fxFlex fxLayout="row" fxLayoutAlign="flex-end">
+            <ul fxLayout="row" fxLayoutGap="20px">
+                <li>
+                    <button mat-icon-button>
+                        <mat-icon>settings</mat-icon>
+                    </button>
+                </li>
+                <li>
+                    <button mat-icon-button>
+                        <mat-icon>help_outline</mat-icon>
+                    </button>
+                </li>
+                <li>
+                    <button mat-button [matMenuTriggerFor]="menu">
+                        <mat-icon>person_outline</mat-icon>
+                    </button>
+                    <mat-menu #menu="matMenu">
+                        <button mat-menu-item>
+                            <mat-icon>exit_to_app</mat-icon>
+                            Sign out
+                        </button>
+                    </mat-menu>
+
+                </li>
+            </ul>
+        </div>
+    </mat-toolbar-row>
+</mat-toolbar>
+
+<div style="display: flex; justify-content: space-around; margin-top: 4px;">
+    <div style="display: flex; justify-content: space-between; align-items: center;">
+    <mat-label style="margin-right: 4px;">FLOOR</mat-label>
+    <mat-form-field appearance="fill">        
+        <mat-select [(value)]="selectedFloor" >
+          <mat-option></mat-option>
+          <mat-option [value]="option.value" *ngFor="let option of floor">{{ option.value }}</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+       
+    <div style="display: flex; justify-content: space-between; align-items: center;">
+    <mat-label style="margin-right: 4px;">SECTION</mat-label>
+      <mat-form-field appearance="fill">        
+        <mat-select [(value)]="selectedSection">
+          <mat-option></mat-option>
+          <mat-option [value]="option.value" *ngFor="let option of section">{{ option.value }}</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+
+    <div style="display: flex; justify-content: space-between; align-items: center;">
+        <mat-label style="margin-right: 4px;">VIEW</mat-label>
+      <mat-form-field appearance="fill">
+       
+        <mat-select [(value)]="selectedView">
+          <mat-option></mat-option>
+          <mat-option [value]="option.value" *ngFor="let option of view">{{ option.value }}</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+
+    <div style="display: flex; justify-content: space-between; align-items: center;">
+        <mat-label style="margin-right: 4px;">METER</mat-label>
+      <mat-form-field appearance="fill">        
+        <mat-select [(value)]="selectedMeter">
+          <mat-option></mat-option>
+          <mat-option [value]="option.value" *ngFor="let option of meter">{{ option.value }}</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+</div>
+<div>
+    <app-widget-area [data]="bigChart"></app-widget-area>
+</div>
+
+<br>
+
+<mat-divider></mat-divider>
+
+<br>
+
+<div fxLayout="row" fxLayoutAlign="space-between center" fxLayoutGap="20px" class="stats-cards">
+    <mat-card fxFlex="25">
+        <app-widget-card label="New Users" total="12k" percentage="50" [data]="cards"></app-widget-card>
+    </mat-card>
+    <mat-card fxFlex="25">
+        <app-widget-card label="Users retention" total="10k" percentage="40" [data]="cards"></app-widget-card>
+    </mat-card>
+    <mat-card fxFlex="25">
+        <app-widget-card label="Users engagement" total="8k" percentage="30" [data]="cards"></app-widget-card>
+    </mat-card>
+    <mat-card fxFlex="25">
+        <app-widget-card label="Referral" total="6k" percentage="20" [data]="cards"></app-widget-card>
+    </mat-card>
+</div>
+
+<br>
+
+<mat-divider></mat-divider>
+
+<br>
+
+<div fxLayout="row" fxLayoutAlign="space-between center" fxLayoutGap="20px">
+    <div fxFlex="60">
+        <div class="mat-elevation-z8">
+            <table mat-table [dataSource]="dataSource">
+
+                <!-- Position Column -->
+                <ng-container matColumnDef="position">
+                    <th mat-header-cell *matHeaderCellDef> No. </th>
+                    <td mat-cell *matCellDef="let element"> {{element.position}} </td>
+                </ng-container>
+
+                <!-- Name Column -->
+                <ng-container matColumnDef="name">
+                    <th mat-header-cell *matHeaderCellDef> Name </th>
+                    <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+                </ng-container>
+
+                <!-- Weight Column -->
+                <ng-container matColumnDef="weight">
+                    <th mat-header-cell *matHeaderCellDef> Weight </th>
+                    <td mat-cell *matCellDef="let element"> {{element.weight}} </td>
+                </ng-container>
+
+                <!-- Symbol Column -->
+                <ng-container matColumnDef="symbol">
+                    <th mat-header-cell *matHeaderCellDef> Symbol </th>
+                    <td mat-cell *matCellDef="let element"> {{element.symbol}} </td>
+                </ng-container>
+
+                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+            </table>
+
+            <mat-paginator [pageSizeOptions]="[5, 10, 20]"></mat-paginator>
+        </div>
+
+    </div>
+    <div fxFlex="40">
+        <app-widget-pie [data]="pieChart"></app-widget-pie>
+    </div>
+</div>
+
+<br>
+<br>
+<br>
