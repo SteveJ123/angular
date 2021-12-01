@@ -1,0 +1,59 @@
+<form class="form-horizontal" id="form-edit-client" [formGroup]="userForm" (submit)="getUserDetail($event)">
+
+  <div class="mb-3">
+    <label for="exampleFormControlInput1" class="form-label">Name</label>
+    <input type="text" class="form-control" formControlName="name" id="exampleFormControlInput1" placeholder="Enter name">
+  </div>
+  <div class="mb-3">
+    <label for="exampleFormControlTextarea1" class="form-label">Phone</label>
+    <input type="number" class="form-control" formControlName="phone" placeholder="Enter phone number">
+  </div>
+  <div class="mb-3">
+    <label for="exampleFormControlInput1" class="form-label">Email</label>
+    <input type="email" class="form-control" formControlName="email" id="exampleFormControlInput1" placeholder="Enter email">
+  </div>
+  <div class="mb-3">
+    <label for="exampleFormControlInput1" class="form-label">Password</label>
+    <input type="text" class="form-control" formControlName="password" id="exampleFormControlInput1" placeholder="password">
+    <div *ngIf="userForm.get('password').invalid &&  userForm.get('password').touched" class="alert alert-danger">
+      <div *ngIf="userForm.get('password').errors.required">
+          password is required.
+      </div>
+      <div *ngIf="userForm.get('password').errors.pattern">
+          enter valid password
+      </div>
+  </div>
+  </div>
+  <div formGroupName="address">
+    <div class="mb-3">
+      <label class="form-label">Street</label>
+    <input class="form-control" formControlName="street" placeholder="street">
+  </div>
+  <div class="mb-3">
+    <label class="form-label">Pincode</label>
+    <input class="form-control" formControlName="pincode" placeholder="pincode">
+  </div>
+  </div>
+
+  <div formArrayName="hobbies">
+    <h1>Hobbies</h1>
+    <button (click)="addHobbies()" >+ Add another hobby</button>
+
+    <div *ngFor="let hobby of hobbies.controls; let i=index">
+      <label for="hobby-{{i}}">Hobby:</label>
+      <input type="text" class="form-control" id="hobby-{{i}}" [formControlName]="i">
+      <button (click)="removeHobby(i)">X</button>
+    </div>
+  </div>
+  
+  <div>
+    <input type="submit" value="Submit">
+  </div>
+
+  
+
+</form>
+
+
+
+

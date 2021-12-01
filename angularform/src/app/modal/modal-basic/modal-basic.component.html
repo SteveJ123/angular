@@ -1,0 +1,37 @@
+<ng-template #content let-modal>
+    <div class="modal-header">
+      <h4 class="modal-title" id="modal-basic-title">Address Details</h4>
+      <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+        <p aria-hidden="true">&times;</p>
+      </button>
+    </div>
+    <div class="modal-body">
+      <form>
+        <div class="form-group">
+          <div >
+            <div class="d-flex contentDisplay">
+                <h4>Full Name:</h4> <p>{{formvalue.fullname}}</p>
+            </div>
+            <div class="d-flex contentDisplay">
+                <h4>Address1:</h4> <p class="address">{{formvalue.address.address1}}</p>
+            </div>
+            <div class="d-flex contentDisplay">
+                <h4>Address2:</h4> <p class="address">{{formvalue.address.address2}}</p>
+            </div>
+            <div class="d-flex contentDisplay">
+                <h4>City:</h4> <p class="city">{{formvalue.address.city}}</p>
+            </div>
+            <div class="d-flex contentDisplay">
+                <h4>State:</h4> <p class="state">{{formvalue.address.state}}</p>
+            </div>
+          </div>         
+        </div>
+      </form>
+    </div>
+    <div class="footer-modal">
+      <button type="button" class="modalButton btn btn-primary" (click)="modal.close('Save click')">OK</button>
+    </div>
+  </ng-template>  
+  <div class="text-center">
+    <button type="submit" class="submitButton btn btn-primary" (click)="open(content)"> submit</button>
+  </div>
