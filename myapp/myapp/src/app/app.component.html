@@ -1,0 +1,4 @@
+<h1>app component {{message}} </h1>
+<!-- <app-child  [test]="title"></app-child> -->
+<app-child (childEvent)="message=$event"  [takevalue]="title"></app-child>
+
