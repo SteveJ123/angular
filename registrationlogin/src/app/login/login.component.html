@@ -1,0 +1,57 @@
+<div class="container-fluid">
+    <div class="row">    
+      <div class="col-8">
+        <img src="../assets/image/registationlogin.jpg" alt="">
+      </div>
+      <div class="col-4 pt-0 pb-0" style="margin-top: 100px; padding-right: 40px;">
+        <h4  class="display-6 text-center">Welcome Back!</h4>
+        <p class="text-center">please login to your account</p>
+        <form  [formGroup]="loginForm" (submit)="loginSubmit($event)">
+        <div class="col-12 mt-4 mb-4">            
+            <input type="name" class="form-control" formControlName="name" id="name" placeholder="Username">
+            <div *ngIf="loginForm.get('name').invalid &&  loginForm.get('name').touched" class="text-danger">
+                <div *ngIf="loginForm.get('name').errors.required">
+                    name is required.
+                </div>
+                <div *ngIf="loginForm.get('name').errors.pattern">
+                    enter valid name
+                </div>
+            </div>
+          </div>          
+          <div class="col-12 mb-4">
+            <input type="password" class="form-control" formControlName="password" id="password" placeholder="Password"  min="8">
+            <div *ngIf="loginForm.get('password').invalid &&  loginForm.get('password').touched" class="text-danger">
+                <div *ngIf="loginForm.get('password').errors.required">
+                    password is required.
+                </div>
+                <div *ngIf="loginForm.get('password').errors?.passwordStrength">
+                    password should contain uppercase, lowercase, numeric
+                </div>                
+                <div  *ngIf="loginForm.controls['password'].hasError('minlength')">
+                    Your phone must be at least 8 characters long.
+                </div>
+            </div>
+            
+          </div>
+          <div class="form-check col-12 d-flex justify-content-between mb-4">
+                <div>
+                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+            <label class="form-check-label" for="flexCheckDefault">
+              Rememeber Me
+            </label>
+              </div>
+              <div>
+                  <a href="forgot passwo4rd">forgot password</a>
+              </div>
+            
+          </div>
+          
+          <div class="col-12 d-grid">
+              <button class="btn" type="submit" style="background-color: #61acb3; color:white"  [disabled]="loginForm.invalid">Login</button>
+          </div>
+
+          <p style="margin-top:140px; text-align: center;">Terms of use Privacy policy</p>
+          </form>
+      </div>
+    </div>
+  </div>
