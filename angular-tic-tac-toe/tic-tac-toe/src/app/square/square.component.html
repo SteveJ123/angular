@@ -1,0 +1,3 @@
+<button  *ngIf="!value" [disabled]="disableButton">{{ value }}</button>
+<button  *ngIf="value == 'X'" [disabled]="disableButton">{{ value }}</button>
+<button  *ngIf="value == 'O'" [disabled]="disableButton">{{ value }}</button>

@@ -1,0 +1,8 @@
+ const squares = [];
+    squares[1] = null;
+    component.xIsNext = true;
+    component.squares[1] = null;
+    component.makeMove(1);
+    //null or undefined will be falsy - if 0 or false is false
+    expect(component.squares.splice(1, 1, 'X')).toEqual(['X']);
+    expect(component.xIsNext).toBeFalse();
