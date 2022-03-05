@@ -1,4 +1,4 @@
- const squares = [];
+    const squares = [];
     squares[1] = null;
     component.xIsNext = true;
     component.squares[1] = null;
