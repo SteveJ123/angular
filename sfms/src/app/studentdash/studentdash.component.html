@@ -1,0 +1,107 @@
+<nav class="navbar navbar-light bg-primary">
+    <div class="container-fluid">
+       <h1 style="color: rgb(253,249,15);">SFMS</h1>
+       <div class="d-flex fiex-row-reverse">
+           <button type="button" data-bs-toggle="modal" data-bs-target="#exampleModal" class="p-2 btn btn-success" (click)="changeAddButton='Add +'">Add Details </button>
+           <button class="p-2 btn btn-primary" (click)="signOut()">SignOut</button>
+       </div>
+    </div>
+</nav>
+<table class="table mt-9">
+    <thead>
+        <tr>
+            <th scope="col">Student ID</th>            
+            <th scope="col" (click)="firstnamedisplay = !firstnamedisplay">First Name</th>          
+            <th scope="col" (click)="lastnamedisplay = !lastnamedisplay">Last Name</th>
+            <th scope="col" (click)="sortByEmail()">Student Email  <i class="fa fa-sort-{{desc}}" aria-hidden="true"></i></th>            
+            <th scope="col" (click)="mobiledisplay = !mobiledisplay">Mobile Number</th>
+            <th scope="col">Student Fees</th>
+            <th scope="col">Fees Pending</th> 
+            <th scope="col">Action</th>            
+        </tr>
+        <tr>
+          <th></th>          
+          <th><input  type="text" *ngIf="firstnamedisplay" class="searchInputField" placeholder="search" #firstname (keyup)="firstNameFilter(firstname.value)"><span *ngIf="firstnamedisplay" class="sort" (click)="sortByfirstName()"><i class="fa fa-sort-{{firstnamesort}}" aria-hidden="true"></i></span></th>        
+          <th><input type="text" *ngIf="lastnamedisplay" class="searchInputField" placeholder="search" #lastname (keyup)="lastNameFilter(lastname.value)"><span *ngIf="lastnamedisplay" class="sort" (click)="sortByLastName()"><i class="fa fa-sort-{{lastnamesort}}" aria-hidden="true"></i></span> </th>
+          <th></th>
+          <th><input type="number" *ngIf="mobiledisplay" class="searchInputField" placeholder="search" #mobilenumber (keyup)="mobileNumberFilter(mobilenumber.value)"> <span *ngIf="mobiledisplay" class="sort" (click)="sortByMobile()"><i class="fa fa-sort-{{mobilesort}}" aria-hidden="true"></i></span></th>
+          <th></th>
+          <th></th>
+          <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let data of filterarray">
+            <td class="studentDashtd">{{data.id}}</td>
+            <td class="studentDashtd">{{data.firstName}}</td>
+            <td class="studentDashtd">{{data.lastName}}</td>
+            <td class="studentDashtd">{{data.email}}</td>
+            <td class="studentDashtd">{{data.mobile}}</td>
+            <td class="studentDashtd">{{data.fees}}</td>
+            <td class="studentDashtd" *ngIf="data.fees >= 9000" class="greenText studentDashtd">{{9000 - data.fees}}</td>
+            <td class="studentDashtd" *ngIf="data.fees < 9000" class="redText studentDashtd">{{9000 - data.fees}}</td>
+            <td>
+                <button (click)="onEdit(data)"  type="button" data-bs-toggle="modal" data-bs-target="#exampleModal" class="studentDashButton btn btn-primary">Edit</button>
+                <button class="studentDashButton btn btn-danger" (click)="deleteStudents(data)">Delete</button>
+                <a class="studentDashButton btn btn-success" [routerLink]="['/studentfeesdetails', data.id]" >Pay</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+
+  
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Student Details</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          
+            <form [formGroup]="formValue">
+                <div class="mb-3">
+                  <label for="exampleInputEmail1" class="form-label">First Name</label>
+                  <input type="text" formControlName="firstName" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+    
+                </div>
+                <div class="mb-3">
+                  <label for="exampleInputPassword1" class="form-label">Last Name</label>
+                  <input type="text" formControlName="lastName" class="form-control" id="exampleInputPassword1">
+                </div>
+
+                <div class="mb-3">
+                    <label for="exampleInputPassword1" class="form-label">Email</label>
+                    <input type="email" formControlName="email" class="form-control" id="exampleInputPassword1">
+                  </div>
+                
+                  <div class="mb-3">
+                    <label for="exampleInputPassword1" class="form-label">Mobile Number</label>
+                    <input type="text" formControlName="mobile" class="form-control" id="exampleInputPassword1">
+                  </div>
+
+                  <div class="mb-3">
+                    <label for="exampleInputPassword1" class="form-label">Fees</label>
+                    <input type="text" formControlName="fees" class="form-control" id="exampleInputPassword1">
+                  </div>
+                
+              </form>   
+
+
+
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" (click)="postStudentDetails()" class="btn btn-primary">{{changeAddButton}}</button>
+         
+        </div>
+      </div>
+    </div>
+  </div>
+
+  
+
+  <!-- <app-child [childvalue]="properityValue" (valuefromchildEmitter)="valuefromchildcomponent = $event"></app-child> -->
+
+  

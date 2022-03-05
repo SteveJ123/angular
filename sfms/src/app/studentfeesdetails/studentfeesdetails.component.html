@@ -1,0 +1,60 @@
+<table class="table table-striped table-dark">
+    <thead>
+      <tr>
+        <th scope="col">ID</th>
+        <th scope="col">First</th>
+        <th scope="col">Last</th>
+        <th scope="col">Email</th>
+        <th scope="col">Mobile</th>
+        <th scope="col">Fees Payed</th>
+        <th scope="col">Total Fees</th>
+        <th scope="col">Pending Fees</th>
+        <th>Pay Fees</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let studentFees of studentFeesDetail">
+        <th scope="row">{{studentFees.id}}</th>
+        <td>{{studentFees.firstName}}</td>
+        <td>{{studentFees.lastName}}</td>
+        <td>{{studentFees.email}}</td>
+        <td>{{studentFees.mobile}}</td>
+        <td>{{studentFees.fees}}</td>
+        <td>9000</td>
+        <td>{{9000 - studentFees.fees}}</td>
+        <td><button data-bs-toggle="modal" data-bs-target="#feesmodal">Add Fees</button></td>
+      </tr>      
+    </tbody>
+  </table>
+  <a class="m-2 btn btn-success" [routerLink]="['/studentdash']" >Back to Student Dashboard</a>
+  <a class="m-2 btn" style="color: blue; text-decoration: none; font-weight: 600; padding-top: 8px;" (click)="signOut()">SignOut</a>
+ 
+  <div class="modal fade" id="feesmodal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Student Fees</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          
+            <form [formGroup]="formFees">                
+
+                  <div class="mb-3">
+                    <label for="exampleInputPassword1" class="form-label">Fees</label>
+                    <input type="text" formControlName="fees" class="form-control" id="exampleInputPassword1">
+                  </div>
+                
+              </form>   
+
+
+
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" (click)="updateStudentFees()" class="btn btn-primary">Update Fees</button>
+         
+        </div>
+      </div>
+    </div>
+  </div>

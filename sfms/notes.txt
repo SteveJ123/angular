@@ -1,0 +1,31 @@
+json-server --watch db.json
+admine@2021
+
+
+- ng test to run unit test cases
+   - to avoid failing one test result  you can add "x" in front of failing test script - "xit"
+   - if more test results fails then use "x" in front of "describde"  - "xdescribe"
+   - in karma test case we will see "*" symbol indicating these test cases are skipped
+
+- how to run specific test cases
+    - to run focused unit test
+        -fit
+    - to run multiple test cases
+        -fdescribe
+
+
+- we create fixture for components and template
+    - what is fixture
+        - it is wrapper around component and template
+        - it is used to get properties of component class and template
+
+- beforeEach method
+    - before running test scripts - we need create certain things
+    - setting up component
+    - setting up data
+    - setting up services
+
+- testbed
+    - it is used to define module, component
+
+-  AAA - arrange act assert
