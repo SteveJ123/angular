@@ -4,8 +4,9 @@ import { Component, OnInit } from '@angular/core';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css'],  
+  styleUrls: ['./app.component.css']
 })
+
 export class AppComponent implements OnInit {
 
   users = [{ "id": 1, "first_name": "Anet", "last_name": "Doe", "email": "adoe0@comcast.net", "gender": "Female", "avatar": "https://robohash.org/sintessequaerat.png?size=50x50&set=set1", "domain": "Sales", "available": false },
@@ -1009,11 +1010,7 @@ export class AppComponent implements OnInit {
   { "id": 999, "first_name": "Wernher", "last_name": "Cavet", "email": "wcavetrq@amazon.co.jp", "gender": "Male", "avatar": "https://robohash.org/exercitationemindignissimos.png?size=50x50&set=set1", "domain": "IT", "available": false },
   { "id": 1000, "first_name": "Haydon", "last_name": "Polly", "email": "hpollyrr@upenn.edu", "gender": "Male", "avatar": "https://robohash.org/sequiquiabeatae.png?size=50x50&set=set1", "domain": "Business Development", "available": true }];
 
-  // currentPage = 0;
-  // pageSize = 20;
 
-  // currentPage: number = 1;
-  // itemsPerPage: number = 20;
 
   searchQuery: string = '';
   items: any[] = this.users;
@@ -1043,67 +1040,6 @@ export class AppComponent implements OnInit {
     this.gender = [...new Set(this.users.map(url => url.gender))];
   }
 
-  // getData(): void {   
-  //  this.items = this.users;
-
-  // }
-
-  // nextPage(): void {
-  //   this.currentPage++;
-  //   this.getData();
-  // }
-
-  // previousPage(): void {
-  //   if (this.currentPage === 1) {
-  //     return;
-  //   }
-  //   this.currentPage--;
-  //   this.getData();
-  // }
-
-  // get startIndex(): number {
-  //   return (this.currentPage - 1) * this.itemsPerPage;
-  // }
-
-  // get endIndex(): number {
-  //   return this.startIndex + this.itemsPerPage;
-  // }
-
-  // get totalPages(): number {
-  //   return Math.ceil(this.items.length / this.itemsPerPage);
-  // }
-
-  // get isLastPage(): boolean {
-  //   return this.currentPage === this.totalPages;
-  // }
-
-  // get isFirstPage(): boolean {
-  //   return this.currentPage === 1;
-  // }
-
-  // get start(): number {
-  //   return this.currentPage * this.pageSize;
-  // }
-
-  // get end(): number {
-  //   return (this.currentPage + 1) * this.pageSize;
-  // }
-
-  //  get totalPages(): number {
-  //   return Math.ceil(this.items.length / this.pageSize);
-  // }
-
-  // get pageNumbers(): number[] {
-  //   return Array(this.totalPages).fill(0).map((x, i) => i);
-  // }
-
-  // get displayedUsers(): any[] {
-  //   return this.items.slice(this.start, this.end);
-  // }
-
-  // setPage(pageNumber: number) {
-  //   this.currentPage = pageNumber;
-  // }
   filteredItems() {
     console.log("test")
     this.items = this.users.filter(item => {
@@ -1124,40 +1060,40 @@ export class AppComponent implements OnInit {
 
   }
 
-  selectedTeam(item: any):any {
+  selectedTeam(item: any): any {
     console.log(item)
 
-    if(item.available === false){
+    if (item.available === false) {
       alert("not available")
       return false;
     }
-    if(this.selectedItems.length === 0){
-      item.selected = true      
+    if (this.selectedItems.length === 0) {
+      item.selected = true
       this.users = [...this.users, item];
       this.items = [...this.items, item];
       this.selectedItems.push(item)
       return true
     }
     const isInArray = this.selectedItems.find(obj => {
-      return obj.id === item.id 
+      return obj.id === item.id
     });
     console.log("isInArray", isInArray)
-    if (isInArray) {  
+    if (isInArray) {
       item.selected = false;
       this.users = [...this.users, item];
       this.items = [...this.items, item];
-      this.selectedItems = this.selectedItems.filter(obj=> obj.id !== item.id)
-     return false;
+      this.selectedItems = this.selectedItems.filter(obj => obj.id !== item.id)
+      return false;
     }
 
     const sameDomain = this.selectedItems.find(obj => obj.domain === item.domain);
 
-    if(sameDomain){
+    if (sameDomain) {
       alert("same domain")
       return false
     }
-        
-    if(!isInArray) {
+
+    if (!isInArray) {
       item.selected = true
       this.users = [...this.users, item];
       this.items = [...this.items, item];
@@ -1165,17 +1101,17 @@ export class AppComponent implements OnInit {
       console.log("selected team", this.selectedItems)
       return true;
     }
-   
-  }
-  isSelected(item: any) { 
-    // console.log(this.selectedItems.includes(itemId)) 
-   
-  }
 
-  showSelectedTeam(){
-    if(this.selectedItems.length === 0){
+  }
+  // isSelected(item: any) { 
+  //   // console.log(this.selectedItems.includes(itemId)) 
+
+  // }
+
+  showSelectedTeam() {
+    if (this.selectedItems.length === 0) {
       alert("no team selected")
-    }else{
+    } else {
       this.showTeam = true;
     }
   }
