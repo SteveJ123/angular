@@ -1,0 +1,90 @@
+<div class="search-container">
+  <input type="text" [(ngModel)]="searchQuery" (input)="filteredItems()" placeholder="Search by name">
+</div>
+
+<div class="filter-container">
+<div>
+  <label for="domain-filter" style="text-align: center;">Domain:</label>
+  <select id="domain-filter" [(ngModel)]="domainFilter" (change)="criteriaFilteredItems()">
+    <option value="">All</option>
+    <option *ngFor="let item of domains" [value]="item">{{item}}</option>
+    <!-- <option value="Marketing">Marketing</option>
+    <option value="IT">IT</option> -->
+    <!-- Add more options as needed -->
+  </select>
+</div>
+<div>
+  <label for="gender-filter">Gender:</label>
+  <select id="gender-filter" [(ngModel)]="genderFilter" (change)="criteriaFilteredItems()">
+    <option value="">All</option>
+    <option *ngFor="let item of gender" [value]="item">{{item}}</option>
+    <!-- <option value="Female">Female</option> -->
+    <!-- Add more options as needed -->
+  </select>
+</div>
+<div>
+  <label for="availability-filter">Availability:</label>
+  <select id="availability-filter" [(ngModel)]="availabilityFilter" (change)="criteriaFilteredItems()">
+    <option value="">All</option>
+    <option value="true">Available</option>
+    <option value="false">Unavailable</option>
+    <!-- Add more options as needed -->
+  </select>
+</div>
+</div>
+
+<div style="text-align: center;">
+  <button (click)="showSelectedTeam()">Show Selected Team</button>
+</div>
+
+<div *ngIf="showTeam">
+  <h1 style="text-align: center;">Team Selected</h1>
+  <div style="display: flex;" class="card-list">  
+  
+  <div *ngFor="let item of selectedItems"  class="card">    
+      <div class="card-content">
+      <h2>{{item.first_name}} {{item.last_name}}</h2>
+    </div>
+      <div class="card-image" >
+      <img [src]="item.avatar" alt="{{item.first_name}} {{item.last_name}}"/>
+    </div>
+    <div class="card-content">
+      <p class="email">{{item.email}}</p>
+      <p class="domain">{{item.domain}}</p>
+      <p class="gender">{{item.gender}}</p>
+      <p class="availability">{{item.available ? 'Available' : 'Not available'}}</p>
+    </div>
+   
+  </div>
+</div>
+</div>
+<h1 style="text-align: center;">Team Members</h1>
+<div class="card-list" style="display: flex; flex-wrap: wrap; justify-content: center;">  
+  <div  *ngFor="let user of items | paginate: { itemsPerPage: 20, currentPage: p }" class="card"
+  [class.highlighted]="user?.selected" 
+  (click)="selectedTeam(user)">
+    <div class="card-content">
+    <h2>{{user.first_name}} {{user.last_name}}</h2>
+  </div>
+    <div class="card-image" >
+    <img [src]="user.avatar" alt="{{user.first_name}} {{user.last_name}}"/>
+  </div>
+  <div class="card-content">
+    <p class="email">{{user.email}}</p>
+    <p class="domain">{{user.domain}}</p>
+    <p class="gender">{{user.gender}}</p>
+    <p class="availability">{{user.available ? 'Available' : 'Not available'}}</p>
+  </div>
+  </div>
+</div>
+
+<!-- <div style="display:flex;"> -->
+<!-- <div *ngFor="let pageNumber of pageNumbers">
+  <button (click)="setPage(pageNumber)">{{ pageNumber + 1 }}</button>
+</div> -->
+<!-- <button (click)="previousPage()" [disabled]="isFirstPage">Previous</button>
+<span>Page {{currentPage}} of {{totalPages}}</span>
+<button (click)="nextPage()" [disabled]="isLastPage">Next</button>
+</div> -->
+
+<pagination-controls (pageChange)="p = $event"></pagination-controls>

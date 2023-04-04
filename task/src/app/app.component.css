@@ -1,0 +1,124 @@
+.card {
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 20px;
+    overflow: hidden;
+    /* width: 100%; */
+    display: inline-block;
+    margin: 10px;
+    width: 250px;
+  }
+  
+  .card-image {
+    display: flex;
+  justify-content: center;
+  align-items: center;
+  /* height: 100vh; set the height of the container to fill the viewport */
+  }
+  
+  .card-image img {
+    max-width: 100%;
+  max-height: 100%;
+    
+  }
+  
+  .card-content {
+    flex: 1 1 auto;
+    padding: 20px;
+    text-align: center;
+  }
+  
+  .card-content h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
+  }
+  
+  .card-content p {
+    margin: 0;
+  }
+  
+  .card-content .email {
+    color: #999;
+    font-size: 14px;
+    margin-bottom: 10px;
+  }
+  
+  .card-content .domain {
+    font-size: 14px;
+    font-weight: bold;
+  }
+  
+  .card-content .availability {
+    font-size: 14px;
+    margin-top: 10px;
+  }
+  
+  .search-container, .filter-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid gray;
+    margin: 20px;
+  }
+  
+  .search-container input[type="text"] {
+    padding: 10px;
+    border: none;
+    border-radius: 5px 0 0 5px;
+    outline: none;
+    font-size: 16px;
+    width: 300px;
+  }
+  
+  .search-container button[type="submit"] {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 0 5px 5px 0;
+    cursor: pointer;
+    font-size: 16px;
+    padding: 10px;
+  }
+  
+  .search-container button[type="submit"]:hover {
+    background-color: #3e8e41;
+  }
+  select {   
+    /* appearance: none;    */   
+
+    display: block;
+  width: 100%;
+  max-width: 320px;
+  height: 50px;
+  float: right;
+  margin: 5px 0px;
+  padding: 0px 24px;
+  font-size: 16px;
+  line-height: 1.75;
+  color: #333;
+  background-color: #ffffff;
+  background-image: none;
+  border: 1px solid #cccccc;
+  -ms-word-break: normal;
+  word-break: normal;
+  }
+
+  .ngx-pagination{
+    display: flex!important;
+    justify-content: space-around!important;
+  }
+
+  .highlighted{
+    border: 1px solid green;
+  }
+
+  button{
+    background-color: gray;
+    height: 40px;
+    color: white;
+    border: none;
+
+  }
